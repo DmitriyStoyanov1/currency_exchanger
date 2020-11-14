@@ -1,9 +1,0 @@
-input {
-  width: 30%;
-  padding-left: 10px;
-  outline: none;
-}
-
-input::placeholder {
-  color: grey;
-}

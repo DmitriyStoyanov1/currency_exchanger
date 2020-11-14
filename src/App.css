@@ -2,48 +2,74 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 650px;
+  min-height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url("./assets/currencies.jpg");
 }
 
-.App {
+.app {
   display: flex;
-  width: 800px;
-  height: 400px;
-  background-color: #8c8c8e;
-  opacity: 0.8;
+  width: 80%;
+  padding: 15px;
+  justify-content: space-between;
+  /*
+    Если тебе нужен фон с прозрачностью используй цвета в rgba
+    тк если будешь юзать опасити, то все элементы этого блока приобретут полупрозрачность
+  */
+  background-color: rgba(140, 140, 142, 0.8);;
   box-shadow: 4px 4px 10px 0px;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .exchange-wrapper,
 .graphic-wrapper {
-  flex-basis: 50%;
+  width: 48%;
+}
+
+.graphic-wrapper > div {
+  border-radius: 5px;
 }
 
 .exchange-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: "Roboto";
-  color: black;
 }
 
-.currencies-quantity {
+.currencies {
+  /* display: flex; */
+}
+
+.currencies .currency {
   display: flex;
-  height: 170px;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  margin-bottom: 10px;
 }
 
-.currencies-quantity input {
-  height: 50px;
-  border-radius: 5px;
-  border: none;
-  box-shadow: 2px 2px 6px 0px;
+.currencies .currency + .currency {
+  /* margin-left: 8px; */
+}
+
+.currencies .currency .select {
+  width: 50%;
+  cursor: pointer;
+}
+
+.currencies .currency input {
+  width: 50%;
+  margin-right: 8px;
+  border-radius: 6px;
+  flex-grow: 0;
+  border: 1px solid hsl(0,0%,80%);
+  text-indent: 4px;
+  font-size: 20px;
+}
+
+.headers h1 {
+  font-size: 50px;
+}
+
+.headers p {
   font-size: 20px;
 }
