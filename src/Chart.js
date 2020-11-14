@@ -32,6 +32,18 @@ const Chart = (props) => {
 
   return (
     <div>
+      <div style={{backgroundColor: 'white'}}>
+        <ul style={{padding: '3px 0px 0px', margin: '0px', listStyle: 'none',
+                    display: 'flex', justifyContent: 'space-around',
+                    borderBottom: '1px solid #c8c8c8',
+                    color: 'gray'
+        }}>
+          <li>1WEEK</li>
+          <li>1MONTH</li>
+          <li>5MONTH</li>
+          <li>1YEAR</li>
+        </ul>
+      </div>
       <HighchartsReact
         highcharts={Highcharts}
         options={options}

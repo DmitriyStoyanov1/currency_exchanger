@@ -14,10 +14,7 @@ function App() {
   const [targetValue, setTargetValue] = useState('')
 
   // храним список доступных валют
-  const [currencies, setCurrencies] = useState([])
-
-  const [title, setTitle] = useState('')
-  const [secondCurrency, setSecondCurrency] = useState('')
+  const [currencies, setCurrencies] = useState(['EUR'])
 
    //запросы на месяц
   const [monthlyCurrencies, setmonthlyCurrencies] = useState([])
@@ -28,7 +25,9 @@ function App() {
     const onAppMounted = async () => {
       const { base, rates } = await fetchLatestCourse()
       setBaseCurrency(base)
-      setCurrencies(Object.keys(rates))
+      const arr = Object.keys(rates)
+      arr.unshift('EUR')
+      setCurrencies(arr)
     }
 
     onAppMounted()
@@ -105,14 +104,6 @@ function App() {
     }
   }
 
-  const onTitleCurrencyChange = (selectEvent) => {
-    setTitle(selectEvent)
-  }
-
-  const onSecondCurrencyChange = (selectEvent) => {
-    setSecondCurrency(selectEvent)
-  }
-
   // Функция для запроса данных
   const fetchLatestCourse = async () => {
     const request = await fetch('https://api.exchangeratesapi.io/latest')
@@ -150,6 +141,8 @@ function App() {
     }
   }
 
+  console.log(currencies)
+
   return (
     <div className="app">
       <div className="exchange-wrapper">
@@ -175,7 +168,6 @@ function App() {
             
             <select onChange={(selectEvent) => {
               onBaseCurrencyChanged(selectEvent.target.value)
-              onTitleCurrencyChange(selectEvent.target.label)
               getMonthlyRates(selectEvent.target.value)
             }}
             >
@@ -197,7 +189,6 @@ function App() {
             />
           <select onChange={(selectEvent) => {
             onTargetCurrencyChanged(selectEvent.target.value)
-            onSecondCurrencyChange(selectEvent.target.label)
             }}
           >
             <option hidden value="">set currency</option>
